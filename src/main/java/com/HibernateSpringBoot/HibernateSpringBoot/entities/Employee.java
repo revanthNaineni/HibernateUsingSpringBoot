@@ -2,13 +2,14 @@ package com.HibernateSpringBoot.HibernateSpringBoot.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Inheritance;
 import jakarta.persistence.InheritanceType;
+import jakarta.persistence.MappedSuperclass;
 
-@Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+//@Entity
+//@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 public abstract class Employee {
 	
 	@Id

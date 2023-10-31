@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.HibernateSpringBoot.HibernateSpringBoot.entities.Employee;
+import com.HibernateSpringBoot.HibernateSpringBoot.entities.FullTimeEmployee;
+import com.HibernateSpringBoot.HibernateSpringBoot.entities.PartTimeEmployee;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
@@ -23,10 +25,25 @@ public class EmployeeRepository {
 		entityManager.persist(employee);
 	}
 	
-	public List<Employee> retrieveEmployees(){
-		TypedQuery<Employee> createNamedQuery = entityManager.createQuery("select e From Employee e", Employee.class);
-		return createNamedQuery.getResultList();
-	}
+	
+	/*
+	 * public List<Employee> retrieveEmployees(){ TypedQuery<Employee>
+	 * createNamedQuery = entityManager.createQuery("select e From Employee e",
+	 * Employee.class); return createNamedQuery.getResultList(); }
+	 */
+	 
+	
+	
+	  public List<FullTimeEmployee> retrieveFullTimeEmployees(){
+	  TypedQuery<FullTimeEmployee> createNamedQuery =
+	  entityManager.createQuery("select e From FullTimeEmployee e",
+	  FullTimeEmployee.class); return createNamedQuery.getResultList(); }
+	  
+	  public List<PartTimeEmployee> retrievePartTimeEmployees(){
+	  TypedQuery<PartTimeEmployee> createNamedQuery =
+	  entityManager.createQuery("select e From PartTimeEmployee e",
+	  PartTimeEmployee.class); return createNamedQuery.getResultList(); }
+	 
 	
 
 }

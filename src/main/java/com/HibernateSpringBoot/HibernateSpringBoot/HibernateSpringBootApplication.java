@@ -40,8 +40,8 @@ public class HibernateSpringBootApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//personRelated();
-		//studentRelated();
-		employeeRelated();
+		studentRelated();
+		//employeeRelated();
 
 	} 	 	
 
@@ -99,6 +99,9 @@ public class HibernateSpringBootApplication implements CommandLineRunner {
 		studentRepository.saveStudent();
 		studentRepository.registerStudentwithCourse();
 		studentRepository.retrieveStudentwithCourse();
+		studentRepository.jpql_CoursesWithZeroStudents();
+		studentRepository.jpql_CoursesWithAtleast2Students();
+		studentRepository.jpql_CoursesWithStudents_OrderedBy();
 		
 	}
 	
@@ -106,7 +109,9 @@ public class HibernateSpringBootApplication implements CommandLineRunner {
 		
 		employeeRepository.insertEmployee(new FullTimeEmployee("Jack", new BigDecimal("10000")));
 		employeeRepository.insertEmployee(new PartTimeEmployee("John", new BigDecimal(50)));
-		System.out.println("Retrieved Employees : "+employeeRepository.retrieveEmployees());
+		//System.out.println("Retrieved Employees : "+employeeRepository.retrieveEmployees());
+		System.out.println("Retrieved Full Time Employees : "+employeeRepository.retrieveFullTimeEmployees());
+		System.out.println("Retrieved Part Time Employees : "+employeeRepository.retrievePartTimeEmployees());
 		
 	}
 

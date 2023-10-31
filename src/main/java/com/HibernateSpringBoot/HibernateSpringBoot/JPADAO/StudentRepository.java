@@ -11,6 +11,7 @@ import com.HibernateSpringBoot.HibernateSpringBoot.entities.Review;
 import com.HibernateSpringBoot.HibernateSpringBoot.entities.Student;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
 @Repository
@@ -25,6 +26,10 @@ public class StudentRepository {
 		entityManager.persist(student);
 		Student student1=new Student("Sachin");
 		entityManager.persist(student1);
+		Student student3=new Student("Dravid");
+		entityManager.persist(student3);
+		Student student4=new Student("Kumble");
+		entityManager.persist(student4);
 	}
 	
 	public void saveStudentWithPassport() {
@@ -89,6 +94,10 @@ public class StudentRepository {
 		Course course1 = entityManager.find(Course.class, 2);
 		student1.addCourses(course1);
 		entityManager.persist(student1);
+		Student student3 = entityManager.find(Student.class, 3);
+		Course course2 = entityManager.find(Course.class, 2);
+		student3.addCourses(course2);
+		entityManager.persist(student3);
 		
 	}
 	
@@ -97,5 +106,22 @@ public class StudentRepository {
 		System.out.println("Student's courses " + student.getCourses());
 	}
 	
+	public void jpql_CoursesWithZeroStudents() {
+		TypedQuery<Course> createQuery = entityManager.createQuery("SELECT c from Course c where c.students is empty",
+				Course.class);
+		System.out.println(createQuery.getResultList());
+	}
+	
+	public void jpql_CoursesWithAtleast2Students() {
+		TypedQuery<Course> createQuery = entityManager.createQuery("SELECT c from Course c where size(c.students) >=2",
+				Course.class);
+		System.out.println(createQuery.getResultList());
+	}
+	
+	public void jpql_CoursesWithStudents_OrderedBy() {
+		TypedQuery<Course> createQuery = entityManager.createQuery("SELECT c from Course c order by size(c.students)",
+				Course.class);
+		System.out.println(createQuery.getResultList());
+	}
 	
 }
