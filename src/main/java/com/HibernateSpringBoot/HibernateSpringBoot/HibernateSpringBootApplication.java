@@ -106,6 +106,7 @@ public class HibernateSpringBootApplication implements CommandLineRunner {
 		
 	}
 	
+	//employeeRelated
 	public void employeeRelated() {
 		
 		employeeRepository.insertEmployee(new FullTimeEmployee("Jack", new BigDecimal("10000")));
