@@ -88,6 +88,7 @@ public class HibernateSpringBootApplication implements CommandLineRunner {
 		personJpaDAO.findAllNamesStartsWithLetter();
 		personJpaDAO.findAllPersonsWhoseLocationisEqualsTo();
 	}
+	//studentRelated
 	public void studentRelated() {
 		studentRepository.saveStudentWithPassport();
 		studentRepository.fetchStudentWithPassport();
