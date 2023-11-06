@@ -103,6 +103,8 @@ public class HibernateSpringBootApplication implements CommandLineRunner {
 		studentRepository.jpql_CoursesWithZeroStudents();
 		studentRepository.jpql_CoursesWithAtleast2Students();
 		studentRepository.jpql_CoursesWithStudents_OrderedBy();
+		studentRepository.jpql_CoursesWithStudents_like();
+		studentRepository.jpql_join();
 		
 	}
 	

@@ -6,6 +6,8 @@ import java.util.List;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -22,6 +24,7 @@ public class Course {
 	private int id;
 	private String name;
 	@OneToMany(mappedBy = "course")
+	@JsonIgnore
 	private List<Review> reviews;
 
 	@CreationTimestamp
@@ -30,6 +33,7 @@ public class Course {
 	private LocalDateTime lastUpdateDate;
 
 	@ManyToMany(mappedBy = "courses")
+	@JsonIgnore
 	private List<Student> students;
 
 	public Course() {

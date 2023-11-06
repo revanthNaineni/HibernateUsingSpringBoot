@@ -11,6 +11,7 @@ import com.HibernateSpringBoot.HibernateSpringBoot.entities.Review;
 import com.HibernateSpringBoot.HibernateSpringBoot.entities.Student;
 
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.Query;
 import jakarta.persistence.TypedQuery;
 import jakarta.transaction.Transactional;
 
@@ -122,6 +123,22 @@ public class StudentRepository {
 		TypedQuery<Course> createQuery = entityManager.createQuery("SELECT c from Course c order by size(c.students)",
 				Course.class);
 		System.out.println(createQuery.getResultList());
+	}
+	
+	public void jpql_CoursesWithStudents_like() {
+		TypedQuery<Course> createQuery = entityManager.createQuery("SELECT c from Course c where c.name like '%Boot%'",
+				Course.class);
+		System.out.println(createQuery.getResultList());
+	}
+	
+	public void jpql_join() {
+		Query createQuery = entityManager.createQuery("SELECT c,s from Course c JOIN c.students s");
+		System.out.println(createQuery.getResultList().size());
+		List<Object[]> resultList = createQuery.getResultList();
+		for (Object[] object : resultList) {
+			System.out.println("Course "+object[0]);
+			System.out.println("Student "+object[1]);
+		}
 	}
 	
 }
