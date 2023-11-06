@@ -7,6 +7,7 @@ import java.util.Date;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import jakarta.persistence.Cacheable;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -26,6 +27,7 @@ import jakarta.persistence.Table;
  * @NamedQuery(name = "find_all_persons_where_location_equals_to", query =
  * "select p from Person p where p.location=:location")
  */
+@Cacheable
 public class Person {
 
 	@Id

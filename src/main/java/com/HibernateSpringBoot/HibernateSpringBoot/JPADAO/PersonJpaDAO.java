@@ -24,6 +24,24 @@ public class PersonJpaDAO {
 		return entityManager.find(Person.class, id);
 	}
 	
+	@Transactional
+	public void findByIdFirst_Level_Cache() {
+		Person person1 = entityManager.find(Person.class, 1);
+		System.out.println("First Person retrieved : "+person1);
+		
+		Person person2 = entityManager.find(Person.class, 1);
+		System.out.println("Second Person retrieved : "+person2);
+	}
+	
+	@Transactional
+	public void findByIdSecond_Level_Cache2() {
+		Person person1 = entityManager.find(Person.class, 1);
+		System.out.println("First Person retrieved : "+person1);
+		
+		Person person2 = entityManager.find(Person.class, 1);
+		System.out.println("Second Person retrieved : "+person2);
+	}
+	
 	//JPQL
 	public List<Person> findAll(){
 		TypedQuery<Person> namedQuery = entityManager.createNamedQuery("find_all_persons", Person.class);

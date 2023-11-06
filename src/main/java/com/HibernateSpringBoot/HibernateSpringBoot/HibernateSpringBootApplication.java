@@ -39,8 +39,8 @@ public class HibernateSpringBootApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		//personRelated();
-		studentRelated();
+		personRelated();
+		//studentRelated();
 		//employeeRelated();
 
 	} 	 	
@@ -87,6 +87,8 @@ public class HibernateSpringBootApplication implements CommandLineRunner {
 		personJpaDAO.findAllNames();
 		personJpaDAO.findAllNamesStartsWithLetter();
 		personJpaDAO.findAllPersonsWhoseLocationisEqualsTo();
+		personJpaDAO.findByIdFirst_Level_Cache();
+		personJpaDAO.findByIdFirst_Level_Cache2();
 	}
 	//studentRelated
 	public void studentRelated() {
