@@ -88,7 +88,7 @@ public class HibernateSpringBootApplication implements CommandLineRunner {
 		personJpaDAO.findAllNamesStartsWithLetter();
 		personJpaDAO.findAllPersonsWhoseLocationisEqualsTo();
 		personJpaDAO.findByIdFirst_Level_Cache();
-		personJpaDAO.findByIdFirst_Level_Cache2();
+		personJpaDAO.findByIdSecond_Level_Cache2();
 	}
 	//studentRelated
 	public void studentRelated() {
